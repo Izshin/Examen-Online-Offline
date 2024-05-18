@@ -67,8 +67,8 @@ export default function RestaurantsScreen ({ navigation, route }) {
             style={({ pressed }) => [
               {
                 backgroundColor: pressed
-                  ? GlobalStyles.brandPrimaryTap
-                  : GlobalStyles.brandPrimary
+                  ? GlobalStyles.brandGreenTap
+                  : GlobalStyles.brandGreen
               },
               styles.actionButton
             ]}>
@@ -85,8 +85,8 @@ export default function RestaurantsScreen ({ navigation, route }) {
             style={({ pressed }) => [
               {
                 backgroundColor: pressed
-                  ? GlobalStyles.brandPrimaryTap
-                  : GlobalStyles.brandPrimary
+                  ? GlobalStyles.brandGreenTap
+                  : GlobalStyles.brandGreen
               },
               styles.actionButton
             ]}>
