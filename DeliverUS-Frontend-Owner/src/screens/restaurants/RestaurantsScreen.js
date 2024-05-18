@@ -39,8 +39,8 @@ export default function RestaurantsScreen ({ navigation, route }) {
         {item.averageServiceMinutes !== null &&
           <TextSemiBold>Avg. service time: <TextSemiBold textStyle={{ color: GlobalStyles.brandPrimary }}>{item.averageServiceMinutes} min.</TextSemiBold></TextSemiBold>
         }
-        { <TextSemiBold>The restaurant is: <TextSemiBold textStyle={{ color: GlobalStyles.brandPrimary }}>{item.status}.</TextSemiBold></TextSemiBold>
-  }
+         <TextSemiBold>The restaurant is: <TextSemiBold textStyle={{ color: GlobalStyles.brandPrimary }}>{item.status}.</TextSemiBold></TextSemiBold>
+
         <TextSemiBold>Shipping: <TextSemiBold textStyle={{ color: GlobalStyles.brandPrimary }}>{item.shippingCosts.toFixed(2)}€</TextSemiBold></TextSemiBold>
         <View style={styles.actionButtonsContainer}>
           <Pressable
@@ -62,7 +62,7 @@ export default function RestaurantsScreen ({ navigation, route }) {
           </View>
         </Pressable>
 
-       {((item.status === 'offline') || (item.status === 'online')) && <Pressable
+       {(item.status === 'online') && <Pressable
             onPress={() => { changeStatusRestaurant(item) }}
             style={({ pressed }) => [
               {
@@ -75,11 +75,28 @@ export default function RestaurantsScreen ({ navigation, route }) {
           <View style={[{ flex: 1, flexDirection: 'row', justifyContent: 'center' }]}>
             <MaterialCommunityIcons name='clock' color={'white'} size={20}/>
             <TextRegular textStyle={styles.text}>
-              Status: {item.status}
+              Status: offline
             </TextRegular>
           </View>
         </Pressable>}
 
+        {(item.status === 'offline') && <Pressable
+            onPress={() => { changeStatusRestaurant(item) }}
+            style={({ pressed }) => [
+              {
+                backgroundColor: pressed
+                  ? GlobalStyles.brandPrimaryTap
+                  : GlobalStyles.brandPrimary
+              },
+              styles.actionButton
+            ]}>
+          <View style={[{ flex: 1, flexDirection: 'row', justifyContent: 'center' }]}>
+            <MaterialCommunityIcons name='clock' color={'white'} size={20}/>
+            <TextRegular textStyle={styles.text}>
+              Status: online
+            </TextRegular>
+          </View>
+        </Pressable>}
         <Pressable
             onPress={() => { setRestaurantToBeDeleted(item) }}
             style={({ pressed }) => [
